@@ -8,7 +8,7 @@ const PORT = process.env.PORT || 5002;
 
 app.use(cors({ origin: true, credentials: true }));
 app.use(express.json({ limit: '50mb' }));
-app.use(express.static(path.join(__dirname, '../../build')));
+// app.use(express.static(path.join(__dirname, '../../build')));
 
 // Use environment variable for MongoDB (Railway) or fallback to local
 const MONGODB_URI = process.env.MONGODB_URL || 'mongodb://localhost:27017/nagraj-hrms';
@@ -424,12 +424,12 @@ const initDefaultUsers = async () => {
   }
 };
 
-// Serve React app for any non-API routes
-app.get('*', (req, res) => {
-  if (!req.path.startsWith('/api')) {
-    res.sendFile(path.join(__dirname, '../../build', 'index.html'));
-  }
-});
+Serve React app for any non-API routes
+// app.get('*', (req, res) => {
+//   if (!req.path.startsWith('/api')) {
+//     res.sendFile(path.join(__dirname, '../../build', 'index.html'));
+//   }
+// });
 
 // Start server
 app.listen(PORT, '0.0.0.0', () => {
